@@ -13,10 +13,10 @@ var routes_list = routes_instance.found;
 
 for(var route_file of routes_list){
     var name = route_file.replace(/(.*\/)*([^.]+).*/ig, '$2');
-    console.log(name)
     entries[name] = [path.resolve(vars.routes_root, route_file)]
     graphs.push(name)
 }
+console.log(graphs)
 for(var name of graphs){
     const _html = new HTMLWebpackPlugin({
         filename: `./templates/${name}.html`,
@@ -34,7 +34,7 @@ for(var name of graphs){
     html_plugins.push(_html);
 }
 var _exports = {graphs, entries, html_plugins}
-console.log(_exports)
+//console.log(_exports)
 module.exports = _exports;
 
 

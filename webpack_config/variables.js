@@ -30,5 +30,5 @@ var global = {
 }
 
 
-console.log(global)
+//console.log(global)
 module.exports = global;
