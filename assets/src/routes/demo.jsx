@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import {Router,Route,Redirect, Link, Switch} from 'react-router-dom';
 import { createHashHistory } from 'history';
 import 'antd/dist/antd.less'
-import './index.less'
 import Demo from '@pages/Demo'
 
 var history = createHashHistory();

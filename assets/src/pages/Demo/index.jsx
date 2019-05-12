@@ -26,6 +26,7 @@ class Home extends Component {
     render() {
         return (
             <div className="demo_html">
+                <div className="title">Demo</div>
                 <h2>Antd Demo</h2>
                 <div>
                     <Button type="primary">Primary</Button>
@@ -39,6 +40,7 @@ class Home extends Component {
                     <div id="bar_charts_example" style={{ width: 400, height: 250 }}></div>
                     <div id="bar_charts_example_3d" style={{ width: 500, height: 250 }}></div>
                 </div>
+
             </div>
         );
     }

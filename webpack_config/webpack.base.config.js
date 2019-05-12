@@ -1,6 +1,7 @@
 const ExtractTextWebapckPlugin = require('extract-text-webpack-plugin');
 const vars = require('./variables');
 const graphs = require('./graphs')
+
 const Mode = {
     DEV: 'development',
     PROD: 'production'
@@ -14,12 +15,12 @@ let less_loaders = [{
         loader: "less-loader",
         options: {
             javascriptEnabled: true,
-            globalVars: {
-                'theme_color': '#FF9647',
-                'theme_red': '#FF796B',
-                'theme_green': '#13D469',
-                'img_root': '/static/imgs'
-            }
+            globalVars: {}
+        }
+    },{
+        loader: 'style-resources-loader',
+        options: {
+            patterns: `${vars.routes_root}/common.less` //全局变量
         }
     }
 ]
@@ -35,7 +36,7 @@ function getConfig(envs){
         output:{
             path: vars.dist_root,
             publicPath: vars.dev_publicPath,  //相对于 HTML 页面的资源
-            filename: './[name].hash:8].js'
+            filename: '[name].[hash:8].js'
         },
         resolve:{
             extensions: ['.js','.jsx','.json'],
@@ -75,10 +76,10 @@ function getConfig(envs){
                 }, {
                     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                     exclude: /(node_modules)/,
-                    loader: 'url-loader',
+                    loader: 'file-loader',
                     options: {
                         limit: 10000,
-                        name: 'static/img/[name].[hash:7].[ext]'
+                        name: 'imgs/[name].[hash:8].[ext]',
                     }
                 }, {
                     test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
@@ -86,7 +87,7 @@ function getConfig(envs){
                     loader: 'url-loader',
                     options:{
                         limit: 10000,
-                        name: 'static/media/[name].[hash:7].[ext]'
+                        name: 'medias/[name].[hash:8].[ext]'
                     }
                 }, {
                     test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
@@ -94,7 +95,7 @@ function getConfig(envs){
                     loader: 'url-loader',
                     options: {
                         limit: 10000,
-                        name: 'static/fonts/[name].[hash:7].[ext]'
+                        name: 'fonts/[name].[hash:8].[ext]'
                     }
                 }
             ]
@@ -112,13 +113,7 @@ function getConfig(envs){
             config.entry[p].unshift(`webpack/hot/dev-server`)
         }
         config.devtool = 'cheap-module-source-map';
-        config.plugins.push(
-            new ExtractTextWebapckPlugin({
-                filename: `./[name].[hash:8].css`,
-                allChunks: false,
-            })
-        )
-        //console.log(config)
+        console.log(config)
         for(let name of graphs.graphs){
             console.log(`http://localhost:${vars.port}/templates/${name}.html`)
         }
@@ -130,7 +125,7 @@ function getConfig(envs){
                 allChunks: false,
             })
         )
-        config.output.publicPath = vars.prod_publicPath
+        config.output.publicPath = vars.prod_publicPath  //url()  prod_publicPath + url-loader: name
         config.output.filename = `${vars.static_js_root}/[name].[chunkhash:8].js`
         //console.log(config)
     }
@@ -138,7 +133,6 @@ function getConfig(envs){
     //console.log(config.entry)
     return config
 }
-
 const baseConfig = {
     dev_config: getConfig(Mode.DEV),
     prod_config: getConfig(Mode.PROD)

@@ -19,7 +19,7 @@ for(var route_file of routes_list){
 console.log(graphs)
 for(var name of graphs){
     const _html = new HTMLWebpackPlugin({
-        filename: `./templates/${name}.html`,
+        filename: `templates/${name}.html`,
         template: `${vars.templates_root}/${name}.html`,
         favicon: `${vars.imgs_root}/favicon.jpg`,
         chunks: ['vendors', 'common', name],
@@ -34,7 +34,8 @@ for(var name of graphs){
     html_plugins.push(_html);
 }
 var _exports = {graphs, entries, html_plugins}
-//console.log(_exports)
+
+console.log(_exports)
 module.exports = _exports;
 
 

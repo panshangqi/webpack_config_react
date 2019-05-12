@@ -6,8 +6,8 @@ const vars = require('./variables');
 var final_proxy = {
     "/api/*":{
         target:"http://10.200.3.16:3202",
-        changeOrigin: true,
-        pathRewrite: {
+            changeOrigin: true,
+            pathRewrite: {
             '^/api': ''
         },
         secure: false, // 接受 运行在 https 上的服务

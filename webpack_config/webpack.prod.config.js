@@ -28,6 +28,7 @@ BaseConfig.optimization = {           //代码拆分
 shelljs.rm('-rf', BaseConfig.output.path)
 shelljs.mkdir('-p', BaseConfig.output.path)
 
+
 //BaseConfig.plugins.push(new BundleAnalyzerPlugin());
 
 Webpack(BaseConfig, function (err, stats) {
