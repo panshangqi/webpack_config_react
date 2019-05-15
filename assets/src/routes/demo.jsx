@@ -4,7 +4,12 @@ import ReactDOM from 'react-dom';
 import {Router,Route,Redirect, Link, Switch} from 'react-router-dom';
 import { createHashHistory } from 'history';
 import 'antd/dist/antd.less'
-import Demo from '@pages/Demo'
+import BasePage from '@components/BasePage'
+import EchartsPlugsBar from '@pages/EchartsPlugs/bar_echarts.jsx'
+import EchartsPlugsLine from '@pages/EchartsPlugs/line_echarts.jsx'
+import EchartsPlugsSpread from '@pages/EchartsPlugs/spread_echarts.jsx'
+import Summary from '@pages/Summary'
+import AntdPlugs from '@pages/AntdPlugs'
 
 var history = createHashHistory();
 //loading-component 动态组件加载s
@@ -19,10 +24,16 @@ document.onreadystatechange = function () {
 }
 ReactDOM.render(
     <Router history={history}>
-        <Switch>
-            <Route exact path="/demo" component={Demo}/>
-            <Route component={Demo} />
-        </Switch>
+        <BasePage>
+            <Switch>
+                <Route exact path="/echarts_plugs_bar" component={EchartsPlugsBar}/>
+                <Route exact path="/echarts_plugs_line" component={EchartsPlugsLine}/>
+                <Route exact path="/echarts_plugs_spread" component={EchartsPlugsSpread}/>
+                <Route exact path="/summary" component={Summary}/>
+                <Route exact path="/antd_plugs" component={AntdPlugs}/>
+                <Route component={EchartsPlugsBar} />
+            </Switch>
+        </BasePage>
     </Router>
     , document.getElementById('root'));
 

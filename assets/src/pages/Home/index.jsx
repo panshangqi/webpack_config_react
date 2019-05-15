@@ -23,7 +23,7 @@ class Home extends Component {
     render() {
         return (
             <div className="home_html">
-                <span className="title">Hello2111221001</span>
+                <span className="title">1Hello0001100000</span>
                 <span>{process.env.NODE_ENV}</span>
                 <Button>Btn1</Button>
             </div>

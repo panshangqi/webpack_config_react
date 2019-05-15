@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node webpack_config/webpack.dev.config.js",
     "build": "node webpack_config/webpack.prod.config.js",
+    "eject": "node script/eject.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,10 +15,12 @@
     "antd": "^3.10.1",
     "babel-polyfill": "^6.26.0",
     "echarts": "^4.1.0",
+    "jquery": "^3.4.1",
     "less": "^3.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {

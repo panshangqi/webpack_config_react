@@ -13,6 +13,7 @@ var global = {
     components_root: path.resolve(src_root, 'components'),
     pages_root: path.resolve(src_root, 'pages'),
     fonts_root: path.resolve(src_root, 'fonts'),
+    store_root: path.resolve(src_root, 'store'),
     //dev
     port: 10032,
     dev_publicPath: '/',

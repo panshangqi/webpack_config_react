@@ -11,15 +11,18 @@ var routes_instance = new glob.Glob('*.jsx', {
 })
 var routes_list = routes_instance.found;
 
+var ignore_html = ['demo']
 for(var route_file of routes_list){
     var name = route_file.replace(/(.*\/)*([^.]+).*/ig, '$2');
+    //if(ignore_html.indexOf(name)!=-1)
+        //continue
     entries[name] = [path.resolve(vars.routes_root, route_file)]
     graphs.push(name)
 }
 console.log(graphs)
 for(var name of graphs){
     const _html = new HTMLWebpackPlugin({
-        filename: `templates/${name}.html`,
+        filename: `./templates/${name}.html`,
         template: `${vars.templates_root}/${name}.html`,
         favicon: `${vars.imgs_root}/favicon.jpg`,
         chunks: ['vendors', 'common', name],

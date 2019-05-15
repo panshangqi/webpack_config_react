@@ -15,9 +15,16 @@ let less_loaders = [{
         loader: "less-loader",
         options: {
             javascriptEnabled: true,
-            globalVars: {}
+            //globalVars: {}
+            globalVars: {
+                'theme_color': '#FF9647',
+                'theme_red': '#FF796B',
+                'theme_green': '#13D469',
+                'img_root': '/static/imgs'
+            }
         }
-    },{
+    }
+    ,{
         loader: 'style-resources-loader',
         options: {
             patterns: `${vars.routes_root}/common.less` //全局变量
@@ -36,14 +43,15 @@ function getConfig(envs){
         output:{
             path: vars.dist_root,
             publicPath: vars.dev_publicPath,  //相对于 HTML 页面的资源
-            filename: '[name].[hash:8].js'
+            filename: './[name].[hash:8].js'
         },
         resolve:{
             extensions: ['.js','.jsx','.json'],
             alias:{
                 '@components': vars.components_root,
                 '@pages': vars.pages_root,
-                '@imgs': vars.imgs_root
+                '@imgs': vars.imgs_root,
+                '@store': vars.store_root
             }
         },
         module: {// 处理对应模块
@@ -58,7 +66,7 @@ function getConfig(envs){
                         {
                             loader: 'babel-loader',
                             options: {
-                                presets: ["env","react"],
+                                presets: ["env","react", "stage-0"],
                                 plugins: [
                                     ["import",
                                         {
@@ -76,7 +84,7 @@ function getConfig(envs){
                 }, {
                     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                     exclude: /(node_modules)/,
-                    loader: 'file-loader',
+                    loader: 'url-loader',
                     options: {
                         limit: 10000,
                         name: 'imgs/[name].[hash:8].[ext]',
@@ -103,7 +111,7 @@ function getConfig(envs){
         plugins: [
             ...graphs.html_plugins
         ],             // 对应的插件
-        devServer: {},           // 开发服务器配置
+        devServer: {hotOnly:true},           // 开发服务器配置
         mode: envs == Mode.DEV ? Mode.DEV: Mode.PROD      // 环境模式
     }
 

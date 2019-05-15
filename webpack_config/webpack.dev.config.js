@@ -22,6 +22,7 @@ var server = new WebpackDevServer(compiler, {
     contentBase: "./public", //默认webpack-dev-server会为根文件夹提供本地服务器
     hot: true,                   //允许热加载
     hotOnly: true,               //当编译失败时，不刷新页面
+    open:true,//自动拉起浏览器
     historyApiFallback: true,
     disableHostCheck: true,
     proxy: final_proxy,
