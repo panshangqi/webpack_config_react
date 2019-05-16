@@ -1,5 +1,25 @@
 
-.virtual_html{
-
+.virtual_html {
+	.list_row {
+		height: 38px;
+		line-height: 38px;
+		display: flex;
+		flexDirection: row;
+		justifyContent: space-around;
+		flex-wrap: nowrap;
+		color: #333;
+		div{
+			text-align: left;
+		}
+	}
+	.list_row:nth-child(even) {
+		background-color: #fdfdfd;
+	}
+	.list_row:hover{
+		background-color: #e0e0e0;
+	}
+	.red{
+		color:#ff0000;
+	}
 }
 

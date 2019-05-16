@@ -11,7 +11,7 @@ import antd_icon from '@imgs/antd.svg'
 class PageHead extends Component {
     constructor(props) {
         super(props);
-        console.log(props)
+        //console.log(props)
         this.headHeight = 65
         this.state = {
             selected_key: '1',
@@ -39,11 +39,13 @@ class PageHead extends Component {
         }else if(key === '2'){
             window.location.href = '#/antd_plugs'
         }else if(key === '5'){
-            window.location.href = '#/echarts_plugs'
+            window.location.href = '#/echarts_plugs_bar'
         }else if(key === '6'){
             window.location.href = '#/echarts_plugs_line'
         }else if(key === '7'){
             window.location.href = '#/echarts_plugs_spread'
+        }else if(key === '8'){
+            window.location.href = '#/virtual_list'
         }
     }
     renderMenu(){
@@ -76,22 +78,10 @@ class PageHead extends Component {
                     <Menu.Item key="7">散点图</Menu.Item>
                 </SubMenu>
 
-                <SubMenu
-                    key="sub2"
-                    title={
-                        <span>
-                <Icon type="appstore" />
-                <span>Navigation Two</span>
-              </span>
-                    }
-                >
-                    <Menu.Item key="9">Option 9</Menu.Item>
-                    <Menu.Item key="10">Option 10</Menu.Item>
-                    <SubMenu key="sub3" title="Submenu">
-                        <Menu.Item key="11">Option 11</Menu.Item>
-                        <Menu.Item key="12">Option 12</Menu.Item>
-                    </SubMenu>
-                </SubMenu>
+                <Menu.Item key="8">
+                    <Icon type="ordered-list" />
+                    <span>虚拟列表</span>
+                </Menu.Item>
             </Menu>
         )
     }

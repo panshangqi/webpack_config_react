@@ -81,7 +81,8 @@ function getConfig(envs){
                             }
                         }
                     ]
-                }, {
+                },
+                {
                     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                     exclude: /(node_modules)/,
                     loader: 'url-loader',

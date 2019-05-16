@@ -10,6 +10,7 @@ import EchartsPlugsLine from '@pages/EchartsPlugs/line_echarts.jsx'
 import EchartsPlugsSpread from '@pages/EchartsPlugs/spread_echarts.jsx'
 import Summary from '@pages/Summary'
 import AntdPlugs from '@pages/AntdPlugs'
+import VirtualList from '@pages/VirtualList'
 
 var history = createHashHistory();
 //loading-component 动态组件加载s
@@ -31,7 +32,8 @@ ReactDOM.render(
                 <Route exact path="/echarts_plugs_spread" component={EchartsPlugsSpread}/>
                 <Route exact path="/summary" component={Summary}/>
                 <Route exact path="/antd_plugs" component={AntdPlugs}/>
-                <Route component={EchartsPlugsBar} />
+                <Route exact path="/virtual_list" component={VirtualList}/>
+                <Route component={VirtualList} />
             </Switch>
         </BasePage>
     </Router>

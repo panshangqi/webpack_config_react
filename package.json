@@ -15,12 +15,13 @@
     "antd": "^3.10.1",
     "babel-polyfill": "^6.26.0",
     "echarts": "^4.1.0",
-    "jquery": "^3.4.1",
     "less": "^3.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
+    "react-virtualized": "^9.21.1",
     "redux": "^4.0.1",
+    "jquery": "^3.1.0",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
